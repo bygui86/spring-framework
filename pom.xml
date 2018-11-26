@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.rabbit.samples</groupId>
+	<artifactId>spring-framework-sample</artifactId>
+	<version>0.0.1</version>
+	<packaging>war</packaging>
+
+	<name>spring-framework-sample</name>
+	<description>Spring Framework sample without Spring Boot</description>
+	<url>https://github.com/bygui86/spring-framework-sample</url>
+
+	<organization>
+		<name>MB SOLID consulting</name>
+		<url>https://mbsolidconsulting.com</url>
+	</organization>
+
+	<contributors>
+		<contributor>
+			<name>Matteo Baiguini</name>
+			<url>https://github.com/bygui86</url>
+		</contributor>
+	</contributors>
+
+	<developers>
+		<developer>
+			<name>Matteo Baiguini</name>
+			<url>https://github.com/bygui86</url>
+		</developer>
+	</developers>
+
+	<scm>
+		<url>https://github.com/bygui86/spring-framework-sample</url>
+		<connection>scm:git:git://github.com/bygui86/spring-framework-sample.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/bygui86/spring-framework-sample.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
+	<properties>
+		<!-- general -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<!-- java -->
+		<java-source.version>1.8</java-source.version>
+		<java-target.version>1.8</java-target.version>
+
+		<!-- maven -->
+		<maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+		<maven-war-plugin.version>3.2.2</maven-war-plugin.version>
+
+		<!-- spring -->
+		<spring-framework.version>5.1.2.RELEASE</spring-framework.version>
+
+		<!-- swagger -->
+		<!-- <swagger.version>2.9.2</swagger.version> -->
+
+		<!-- app-server -->
+		<!--<netty.version>4.1.31</netty.version>-->
+
+		<!-- logging -->
+		<slf4.version>1.7.25</slf4.version>
+
+		<!-- others -->
+		<jstl.version>1.2</jstl.version>
+		<!-- <jackson.version>2.9.3</jackson.version> -->
+		<lombok.version>1.18.2</lombok.version>
+	</properties>
+
+	<dependencies>
+		<!-- spring-framework -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+
+		<!-- swagger -->
+		<!-- <dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${swagger.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${swagger.version}</version>
+		</dependency> -->
+
+		<!-- app-server -->
+		<!--<dependency>-->
+			<!--<groupId>io.netty</groupId>-->
+			<!--<artifactId>netty-all</artifactId>-->
+			<!--<version>${netty.version}</version>-->
+			<!--<scope>compile</scope>-->
+		<!--</dependency>-->
+
+		<!-- logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4.version}</version>
+		</dependency>
+
+		<!-- others -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+		</dependency>
+		<!-- <dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency> -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+			<scope>provided</scope>
+			<optional>true</optional>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<!-- general -->
+		<finalName>${project.artifactId}</finalName>
+		<sourceDirectory>src</sourceDirectory>
+
+		<!-- plugins -->
+		<plugins>
+			<!-- maven-compiler -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<fork>true</fork>
+					<source>${java-source.version}</source>
+					<target>${java-target.version}</target>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>${lombok.version}</version>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
+			</plugin>
+
+			<!-- maven-war -->
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${maven-war-plugin.version}</version>
+				<configuration>
+					<warSourceDirectory>WebContent</warSourceDirectory>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
