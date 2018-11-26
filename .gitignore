@@ -68,3 +68,9 @@ bin/
 build/
 target/
 *.class
+
+
+
+###################### Project ##################
+
+webapps/*.war

@@ -22,7 +22,7 @@ public class GreetingsController {
 			+ "<div class='center-text'>"
 			+ "<h3>Hello!</h3>"
 			+ "<p>"
-			+ "Welcome to the Spring Framework sample project not using Spring Boot:)"
+			+ "Welcome to the Spring Framework sample project not using Spring Boot :)"
 			+ "</p>"
 			+ "</div>"
 		;
